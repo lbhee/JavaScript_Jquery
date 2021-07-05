@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#btn').click(function(){
+				//비동기처리
+				$.ajax(
+						{	//서로다른 도메인끼리 데이터를 주고받는걸 막아놨다. IP로 치면 에러(Access-Control-Allow-Origin) - 서버에서 접근을 풀어놔야한다.
+							url:"http://192.168.0.24:8090/WebClient_Jquery_Ajax/Ex10_jsonlib_emplist.jsp",
+							type:"GET",
+							dataType:"JSON", //POINT
+							success:function(data){
+								console.log(data); //객체로 잘 넘어왔는지 확인
+								
+								//가공은 마음대로~
+								$.each(data, function(index, obj){
+									$('#list').append(
+										"<tr><td>" + index + "</td><td>" + obj.empno + "</td><td>"
+										+ obj.ename + "</td><td>" + obj.sal + "</td><td>"
+										+ obj.job + "</td><td>" + obj.comm + "</td></tr>"
+									);
+								});
+							},
+							error:function(xhr){
+								alert(xhr.satus + "ERROR");
+							}
+						}
+				);
+			});
+		});
+	</script>
+</head>
+<body>
+	<h3>EMP LIST</h3>
+	<input type="button" value="emplist" id="btn">
+	<hr>
+	<table id="list" border="1">
+	
+	</table>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	/*
+	onload 이벤트가 발생하는 시점 : body태그안에있는 모든 요소가 브라우저에 로딩되고 난 후 (DOM객체가 생성되고 나서)
+		function call() {}		
+		 방법1. <body onload = "call()">
+		 방법2. window.onload. = call();
+		      (call이실행되는 시점에는 body가 가지고 있는 모든요소가 메모리에 dom형태로 올라가 있는 상태)
+		    
+	call()을 재사용안 할 경우(load에서만 한번쓰고 안쓸 때)
+	함수의 이름이 굳이 필요없음 -> 익명함수 (재사용불가)	
+	(페이지의 모든 요소가 로딩된 후에 함수를 자동호출하는 방법이다.)
+	*/
+	window.onload = function() { // body앞에 쓸때는 onload를 써서 모든요소를 올린후 사용하게한다.
+		let out="";
+		out+="<ul>";
+			out+="<li>javascript</li>";
+			out+="<li>jquery</li>";
+			out+="<li>vue</li>";
+		out+="</ul>";
+		
+		document.body.innerHTML = out; //body안쪽의 모든 요소를 새로운 요소로 덮어버린다.
+		
+		
+		let header = document.createElement("h1");       // <h1></h1>
+		let textnode = document.createTextNode("hello"); // hello
+		header.appendChild(textnode);                    // <h1>hello</h1>
+		document.body.appendChild(header);               // HELLO WORLD를 hello로 덮어버린다.
+		
+		
+		// img태그를 동적으로 생성하고 src속성도 추가하고 , 그것을 body태그의 자식으로 append해보자
+		let img = document.createElement("img"); // <img>
+		img.setAttribute("src", "images/2.png"); // <img src="images/2.png">
+		img.setAttribute("width", "100");
+		img.setAttribute("height", "100");       // <img src="images/2.png" width="100" height="100">
+		document.body.appendChild(img);          // 다른자식을 덮어버리지않고 이어서 생기는 것이다.
+	}
+	
+	</script>
+</head>
+<body>
+HELLO WORLD
+</body>
+</html>

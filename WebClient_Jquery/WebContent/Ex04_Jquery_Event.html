@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		//$(document).read(function(){});
+		$(function(){ //줄임표현
+			$('#btncopy').click(function() {
+				//let data = $('#txtuserid').val();
+				//$('#txtcopyuserid').val(data);
+				$('#txtcopyuserid').val($('#txtuserid').val());
+			});
+			
+			//select태그
+			$('#select_hobby').change(function(){ //값의 변화가 일어나면
+				const text = $(':selected').text(); //태그가 하나밖에 존재하지않을때만 이렇게 쓰는게 가능하다.원래는id값으로!
+				const text2 = $('#select_hobby option:selected').text();
+				const val = $('#select_hobby').val();
+				console.log(text);
+				console.log(text2);
+				console.log(val);
+			});
+			
+			
+			$('#txtpwd2').keyup(function(){ //키보드를 눌렀따가 떼었을때 발생
+				if($('#txtpwd').val() != $('#txtpwd2').val()) {
+					$('#message').text("<h3>암호 불일치</h3>"); //<h3>태그도 텍스트로 보인다.
+				}else {
+					$('#message').html("<h3>암호 일치</h3>");  //태그가 적용된다.
+				}
+			});
+			
+			//console.log($('input')); //body안에 모든 input태그를 모두 출력(배열)
+			$('input').focus(function(){ //마우스포커스가 들어오면
+				console.log($(this));
+				$(this).css('background-color', 'gray');
+			});
+			
+			$('input').blur(function(){ //마우스포커스가 나가면
+				console.log($(this));
+				$(this).css('background-color', 'white');
+			});
+			
+			//toggle(on아니면 off)이벤트
+			//.hover(function(){}, function(){}) //함수2개도가능
+			$('p').hover(function(){
+				$(this).css('background-color', "gold");
+			}, function(){
+				$(this).css('background-color', "red");
+			});
+			
+			
+		});
+	</script>
+</head>
+<body>
+	<p>Jquery hover(mouseover , mouseleave)</p>
+	
+	ID:<input type="text" id="txtuserid">
+	<hr>
+	<input type="button" id="btncopy" value="copy">
+	<hr>
+	Copy ID:<input type="text" id="txtcopyuserid">
+	
+	<hr>
+	<select id="select_hobby">
+		<option value="JAVA">java</option>
+		<option value="SCRIPT">script</option>
+		<option>jdbc</option>
+	</select>
+	<br>
+	<input type="text" id="txtselect">
+	<hr>
+	<table style="border: 1px solid red;">
+		<tr>
+			<td>암호</td>
+			<td>
+				<input type="text" id="txtpwd" size="20" maxlength="5">
+			</td>
+		</tr>
+		<tr>
+			<td>암호확인</td>
+			<td>
+				<input type="text" id="txtpwd2" size="20" maxlength="5">
+			</td>
+		</tr>
+	</table>
+	<div id="message" style="color: red"></div>
+</body>
+</html>

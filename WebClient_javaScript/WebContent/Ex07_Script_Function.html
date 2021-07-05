@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript">
+        // 함수만들기
+        // function call() {}
+        // myfun = function() {}
+        // 이름을 호출하면 실행(필요하다면 재호출 가능)
+
+        // function() {} --> 익명함수 (이름이 없다.) , 호출되지 않아도 자동으로 실행
+        // function aa() {} 라고 함수를 만들면 setInterval(aa(), 1000); 으로 썼어야하지만
+        // setInterval만 사용하고 다른곳에서는 안쓰이면 익명함수로 쓰자.
+        // callback함수 (프로그램 논리에 의해서 자동으로 호출되는 함수 - 재귀호출)
+        var myTime = setInterval(function() { //setInterval() -> 일정한 시간 간격으로 작업을 수행하기 위해서 사용
+            let d = new Date(); // Date d = new Date();
+            let t = d.toLocaleTimeString(); //.toLocaleTimeString() -> 시간리턴
+            document.getElementById("time").innerHTML = t; },1000); // 1초마다 함수호출해서 갱신
+        
+        // myTime === setInterval
+        function myTimeStop() {
+            window.clearInterval(myTime); //clearInterval() -> setInterval()함수를 사용하여 중지
+        }
+    </script>
+</head>
+<body>
+    <p id="time"></p>
+    <button onclick="myTimeStop()">stop Time</button>
+</body>
+</html>

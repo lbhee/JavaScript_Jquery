@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Content</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#btn1').click(function(){
+				alert("text : " + $('#test').text()); //text()는 getter역할(순수한 텍스트만 읽어온다.)
+			});
+			
+			$('#btn2').click(function(){
+				alert("html : " + $('#test').html()); //html()은 getter역할(태그를 인정하며 읽어온다.)
+			});
+			
+			$('#btn3').click(function(){
+				$('#test').html("<div>AAAA</div>");
+				//$('#test').text("<div>AAAA</div>");
+			});
+		});
+	</script>
+</head>
+<body>
+	<p id="test">안녕하세요<b>정말</b>방가방가</p>
+	<button id="btn1">show text</button>
+	<button id="btn2">show html</button>
+	<button id="btn3">html</button>
+	
+</body>
+</html>
+

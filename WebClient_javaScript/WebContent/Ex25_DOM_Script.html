@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>이벤트 주의 사항</title>
+	<script type="text/javascript">
+		function displayDate() {
+			console.log("call");
+			document.getElementById("demo").innerHTML = new Date();
+		}
+		
+		// document.getElementById("mybtn").onclick=displayDate(); //body실행이 아직안되서 메모리에 없는상태라 안됨..
+		
+		window.onload = function(){
+			console.log("load");
+			// document.getElementById("mybtn").onclick=displayDate(); // 버튼을 클릭하기 전에 이미 메모리에 올라옴.
+		}
+	</script>
+</head>
+<body>
+	<button id="mybtn">눌러봐</button>
+	<br>
+	<button id="mybtn2" onclick="">눌러봐2</button>
+	<br>
+	<p id="demo"></p>
+</body>
+	<script type="text/javascript">
+		// 버튼을 클릭하면 함수를 호출하겠다.
+		// displayDate();
+		// document.getElementById("mybtn").onclick=displayDate(); //버튼을 클릭하기 전에 displayDate()호출되어버림.
+		// 함수에 괄호를 빼고 써야한다!!!괄호가 있으면 displayDate();와 같다.
+		
+		document.getElementById("mybtn").onclick=displayDate;
+	</script>
+</html>

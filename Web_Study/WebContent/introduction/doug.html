@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>동근 - 생활계획표</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/dong.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2" >
+						<a href="index.html" class="logo"><strong>동근</strong> <span>by 3조</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="landing.html">김대업</a></li>
+							<li><a href="jina.html">김진아</a></li>
+							<li><a href="Ahn.html">안승주</a></li>
+							<li><a href="doug.html">이동근</a></li>
+							<li><a href="LBH.html">이보희</a></li>
+							<li><a href="seokhee.html">한석희</a></li>
+						</ul>
+						
+					</nav>
+
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					<section id="banner" class="style2">
+						<div class="inner">
+							<span class="image">
+								<img src="images/dong.JPG" alt="" />
+							</span>
+							<header class="major">
+								<h1>동근이의 생활계획표</h1>
+							</header>
+							<div class="content">
+								<p> 나의 생활계획표 </p>
+							</div>
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h2>나의 소개</h2>
+									</header>
+									<p>이름 : 이동근 &nbsp;&nbsp;&nbsp;&nbsp;  거주지 : 동대문구</p>
+									<p>나이 : 27살(1995년생) </p>
+								</div>
+							</section>
+
+						<!-- Two -->
+							<section id="two" class="spotlights">
+								<section>
+
+									<div class="life_img">
+										<div class="pie-chart1"></div>
+									</div>
+								
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>생활 계획표</h3>
+											</header>
+											<p>
+												1️⃣. 12시 ~ 8시 - 숙면 <br>
+												2️⃣. 8시 ~ 8시 30분 - 세면 <br>
+												3️⃣. 8시 30분 ~ 9시 30분 - 비트캠프 가기<br>
+												4️⃣. 9시 30분 ~ 6시 - 신나는 IT수업 듣기<br>
+												5️⃣. 6시 ~ 9시 - 복습 & 예습 & 과제 <br>
+												6️⃣. 9시 ~ 10시 - 집가기 <br>
+												7️⃣. 10시 ~ 12시 - 신나는 유투브 시청시간 <br>
+											</p>
+											<button class="replay">시간표 빙빙돌리기</button>
+										</div>
+									</div>
+								</section>
+							</section>	
+						<!-- Three -->
+							<section id="two">
+								<div class="inner">
+									<header class="major">
+										<h2>나의 각오</h2>
+									</header>
+									<p>벌써 반이 지나갔습니다. <br> 좀만 더 힘내서 남은기간 아자아자 파이팅 😃👍</p>
+									<button class="hidebutton">눌러봐</button>
+									<div class="hide">
+										<hr>
+										<h4>남은 수료일 </h4>
+										<h2 id="day"></h2>
+										<hr>
+									</div>	
+								</div>	
+										
+
+								
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer" >
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+			<script type="text/javascript">
+				$(window).ready(function(){
+			    var i=1;
+			    var func1 = setInterval(function(){
+			        if(i<34.5){
+			            color1(i);
+			            i++;
+			        } else if(i<37){
+			            color2(i);
+			            i++;
+			        } else if(i<41){
+			            color3(i);
+			            i++;
+			        } else if(i<76){
+						color4(i);
+						i++
+					} else if(i<89){
+						color5(i);
+						i++
+					} else if(i<93){
+						color6(i);
+						i++
+					} else if(i<101){ 
+						color7(i);
+						i++
+					} else {
+			            clearInterval(func1);
+			        }
+			    },10);
+			});
+
+
+			function color1(i){
+			    $(".pie-chart1").css({
+			        "background":"conic-gradient(#8b22ff 0% "+i+", #ffffff "+i+"% 100%)",
+					"opacity":"0.9"
+			        });
+			    
+			}
+			function color2(i){
+			    $(".pie-chart1").css({
+			        "background":"conic-gradient(#8b22ff 0% 33.5%, #ffc33b 33.5% "+i+"%, #ffffff "+i+"% 100%)"
+			        });
+			     
+			}
+			function color3(i){
+			    $(".pie-chart1").css({
+			        "background":"conic-gradient(#8b22ff 0% 33.5%, #ffc33b 33.5% 36%, #21f3d6 36% "+i+"%, #ffffff "+i+"% 100%)"
+			        });
+			     
+			}
+			function color4(i){
+			    $(".pie-chart1").css({
+					"background":"conic-gradient(#8b22ff 0% 33.5%, #ffc33b 33.5% 36%, #21f3d6 36% 40%, #FFFF00 40% "+i+"%, #ffffff "+i+"% 100%)"
+			        });
+			     
+			}
+			function color5(i){
+			    $(".pie-chart1").css({
+					"background":"conic-gradient(#8b22ff 0% 33.5%, #ffc33b 33.5% 36%, #21f3d6 36% 40%, #FFFF00 40% 75%, #BDB76B 75% "+i+"%, #ffffff "+i+"% 100%)"
+			        });
+			     
+			}
+			function color6(i){
+			    $(".pie-chart1").css({
+			        "background":"conic-gradient(#8b22ff 0% 33.5%, #ffc33b 33.5% 36%, #21f3d6 36% 40%, #FFFF00 40% 75%, #BDB76B 75% 88%, #FFA07A 88% "+i+"%,  #ffffff "+i+"% 100%)"
+			        });
+			     
+			}
+			function color7(i){
+			    $(".pie-chart1").css({
+			        "background":"conic-gradient(#8b22ff 0% 33.5%, #ffc33b 33.5% 36%, #21f3d6 36% 40%, #FFFF00 40% 75%, #BDB76B 75% 88%, #FFA07A 88% 92%, #FFC0CB 92% "+i+"%, #ffffff "+i+"% 100%)",
+					"opacity":"0.9"
+			        });
+			     
+			}
+
+			$('.replay').click(function(){
+			    i=1;
+			    func1 = setInterval(function(){
+					if(i<34.5){
+			            color1(i);
+			            i++;
+			        } else if(i<37){
+			            color2(i);
+			            i++;
+			        } else if(i<41){
+			            color3(i);
+			            i++;
+			        } else if(i<76){
+						color4(i);
+						i++
+					} else if(i<89){
+						color5(i);
+						i++
+					} else if(i<93){
+						color6(i);
+						i++
+					} else if(i<101){ 
+						color7(i);
+						i++
+					} else {
+			            clearInterval(func1);
+			        }
+			    },10);
+			});
+
+			var jb = jQuery.noConflict();
+			
+			function day(){
+				var nowdata = new Date();
+				var enddate = new Date('2021-06-30 24:00:00').getTime();
+				var days = enddate - nowdata;
+				var day = Math.floor((days / (1000 * 60 * 60 * 24)));
+				var hours = Math.floor((days % (1000 * 60 * 60 * 24)) / (1000*60*60));
+				var miniutes = Math.floor((days % (1000 * 60 * 60)) / (1000*60));
+				var seconds = Math.floor((days % (1000 * 60)) / 1000);
+				
+				m = day + "일 " + hours + "시 " +  miniutes + "분 " + seconds + "초 남았다...😭"; 
+
+				
+				document.getElementById("day").innerHTML = m;
+			}
+
+			// hide 기능
+			jb('.hidebutton').click(function runEffect() {
+				jb(".hide").show("highlight",callback);
+				day();
+			});
+
+
+			function callback() {
+     		 setTimeout(function() {
+       			 jb( ".hide:visible" ).removeAttr( "style" ).fadeOut();
+				}, 1000 );
+    			};
+
+			jb('.hide').hide();
+
+			
+
+
+
+
+
+
+			</script>
+
+			
+
+
+	</body>
+</html>

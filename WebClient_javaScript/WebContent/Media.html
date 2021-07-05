@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		canvas.hidden {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<video id="myvideo" width="400" controls autoplay muted>
+		<source src="video/video.mp4" type="video/mp4">
+	</video>
+
+	<button id="fastspeed">2배속</button>
+	<button id="slowspeed">0.5배속</button>
+	<button id="nomalspeed">정상속도</button>
+	<button id="capture">캡쳐</button>
+	<button id="del">전체삭제</button>
+	<button id="flash">움짤</button>
+	<button id="stop">정지</button>
+	<img alt="" src="" id="moving">
+	<canvas id="canvas" class="hidden"></canvas>
+	<div id="photos"> </div>
+	
+	<hr>
+	
+	<video id="vlist" width="400" controls autoplay muted>
+		<source src="video/java.mp4" type="video/mp4">
+	</video>
+	<select id="select" onchange="change()">
+		<option value="">JAVA
+		<option value="video/html.mp4">HTML
+		<option value="video/css.mp4">CSS
+		<option value="video/javascript.mp4">Javascript
+	</select>	
+</body>
+
+<script type="text/javascript">
+	let video;
+	let canvas;
+	let ctx;
+	let capturearr = [];
+	let num = 0;
+	let moving;
+	
+	window.onload = function(){
+	     video = document.getElementById("myvideo");
+	     canvas = document.getElementById("canvas");
+	}
+	
+	// 캡쳐기능
+	document.getElementById('capture').addEventListener('click', function(){
+		ctx = canvas.getContext("2d");
+	    canvas.width = 300;
+	    canvas.height = 200;
+	    ctx.drawImage(video, 0, 0,300,200);
+	    let imgUrl = canvas.toDataURL('image/png'); //캔버스로붙 실제 이미지를 가져오기
+	    let img = document.createElement('img');    //엘리먼트를 만들고 가져온 이미지를 출력하기 
+		img.setAttribute('src', imgUrl);
+		img.setAttribute('class', 'pts'); 
+	    photos.appendChild(img);  //photos Div안에 img태그추가하기 
+		capturearr.push(imgUrl);  //capturearr배열안에 이미지넣기
+	});
+	
+	//캡처이미지 전체삭제
+	document.getElementById('del').addEventListener('click', function(){
+		let pts = document.getElementsByClassName("pts");
+		for(let index in pts) {
+			if(pts.length == 0) {
+				break;
+			}
+			document.getElementById("photos").empty(pts[pts.length-1]);
+			while(capturearr != 0) {
+				capturearr.pop();
+			}
+		}
+		window.clearInterval(moving);
+	});
+	
+	//움짤
+	document.getElementById('flash').addEventListener('click', function(){
+		moving = setInterval(function(){
+	    								if(num == capturearr.length-1){num = 0;}
+	    								document.getElementById("moving").src = capturearr[num++];
+										},500)
+	});
+	  
+	//움짤정지	
+	document.getElementById('stop').addEventListener('click', function(){
+		window.clearInterval(moving);
+	});
+	
+		
+	// 배속기능
+	var vid = document.getElementById("myvideo");
+	document.getElementById('fastspeed').addEventListener('click', function(){
+		vid.playbackRate = 2.0;
+	});
+	
+	document.getElementById('slowspeed').addEventListener('click', function(){
+		vid.playbackRate = 0.5;
+	});	
+	
+	document.getElementById('nomalspeed').addEventListener('click', function(){
+		vid.playbackRate = 1.0;
+	}); 
+	
+	
+	// 동영상샐렉트
+	let slt = document.getElementById('select');
+	let li = document.getElementById('vlist');
+	function change() {
+		li.src = slt.value;
+	}
+</script>
+</html>
+
+
+	<!--  
+	<iframe id="one" width="560" height="315" src="https://www.youtube.com/embed/poXOW0ZDImU" frameborder="0" 
+	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	-->
+	
+	<!--  	
+	<audio controls>                                 
+	<source src="horse.ogg" type="audio/ogg">         
+	<source src="horse.mp3" type="audio/mpeg"> 
+	Your browser does not support the audio element.   
+	</audio>
+	-->

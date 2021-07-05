@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		/*
+			유효성 검증
+			검증 누가하는가?
+					
+			사이트접속(bit.or.kr) >> 회원가입버튼 클릭 >> 회원가입화면보임
+			1. client >> 회원가입 데이터 입력 >> 서버로 전송 >> 서버가 데이터를 받은 후 검증 >> 일치/불일치 응답
+			2. client >> 회원가입 데이터 입력 >> 서버로 전송X >> javascript가 검증 >> 검증이 끝나면 서버로 전송
+			
+			// 검증 : 글자개수, 특수문자표기
+			1번은 서버접속 횟수 증가(네트워크 트랙픽 증가(라운드 트림) : 통신..) 안좋아요
+			>> 클라이언트가 할 수 있는 모든 검증은 클라이언트에서 끝내자 (javascript)
+			
+			ID 중복검사 (서버통신 필요함) >> ID 입력 >> 서버가 DB안에 있는지 확인해야함
+			
+		*/
+		function send() {
+			// 유효성을 검증하고 문제가 없다면 서버로 전송
+			// 문제가 있다면 재입력을 요청
+
+			// 1. 요소의 정보를 가지고 와야 한다.
+			// var ele = documnet.forms[0].elements[0].value
+			// 최종적으로는 : DOM 사용..
+
+			let inputuserid = document.loginform.txtuserid;
+			// inputuserid == <input type="text" name="txtuserid">
+			console.log(inputuserid);
+			console.log(inputuserid.value); // 이렇게해야 입력값이 나온다.
+
+			// DOM을 사용한다면 (조건: 태그의 식별자가 id)
+			let userpwd = document.getElementById("txtpwd");
+			console.log(userpwd);
+			console.log(userpwd.value); // 이렇게해야 입력값이 나온다.
+
+			//검증로직(개발자 마음)
+			// 1. 입력했는지
+			// 2. 입력한 값이 로직에 맞는지
+			if(inputuserid.value == "" || !(inputuserid.value.length >= 3 && inputuserid.value.length <= 10)){
+				alert("다시 입력해");
+				document.loginform.txtuserid.focus();
+				inputuserid.select(); //선택(블럭)
+			}else{
+				alert("검증 완료");
+				// 서버로 전송
+				// form action="주소" method=""
+				document.loginform.action= "Ex08_login.jsp";
+				document.loginform.submit();  // form태그안에 내장되어있는 전송 함수 submit();
+			}
+		}
+	</script>
+</head>
+<body>
+	<form action="#" method="get" name="loginform">
+			ID: <input type="text"     name="txtuserid">
+			PWD:<input type="password" name="txtpwd"  id="txtpwd">
+			<input type="button" value="전송" onclick="send()">
+		<!--
+			type="submit"
+			type="image"
+			type="button" onclick="함수에서 전송처리"
+		-->
+	</form>
+</body>
+</html>

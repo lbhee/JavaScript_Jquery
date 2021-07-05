@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		/*
+		window.onload = function() {
+			document.getElementById("btn").onclick = function() {
+				alert("DOM SCRIPT");
+			}
+		}
+		*/
+
+		$(document).ready(function(){
+			$('#btn').click(function(){
+				//alert("DOM Jquery")
+				$(this).hide(); //버튼을 클릭하면 버튼을 감춰라(this는 이벤트를 하는 주체) = display: none;
+			});
+		});
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="버튼">
+</body>
+</html>

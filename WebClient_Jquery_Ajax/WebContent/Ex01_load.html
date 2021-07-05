@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	/*
+		Jquery가 제공하는 비동기함수(Ajax)
+		https://api.jquery.com/category/ajax/
+		https://www.w3schools.com/jquery/jquery_ajax_intro.asp
+		 
+		Jquery 비동기함수는 내부적으로 XmlHttpRequest객체를 사용
+		
+		<Ajax>
+		- Global Ajax Event Handlers (10%)
+		- Helper Functions			 (10%)
+		- Low-Level Interface   	 (30%) : 모든옵션을 개발자가 제어   -> $.ajax()
+		- Shorthand Methods			 (50%) : 기본옵션을 가지고 있는 함수 -> load() , get()
+		
+		<문법>
+		$( "#result" ).load( url , data  , complete )
+		 (서버에서 데이터를 로드하고 반환된 HTML을 일치하는 요소에 배치한다.)
+		
+		- [url]
+			Type: String
+			(요청이 전송되는 URL이 포함된 문자열입니다.)
+		- [data]
+			Type: PlainObject or String
+			(요청과 함께 서버에 전송되는 일반 개체 또는 문자열입니다.)
+		- [complete]
+			Type: Function( String responseText, String textStatus, jqXHR jqXHR )
+			(요청이 완료되면 실행되는 콜백 함수입니다.)
+		
+		load함수
+		 1. 서버에서 받은 데이터가 html, text 형식
+		 2. Client가 정한 특정요소에 자동으로 매핑할 목적으로 사용(자동으로 innerHTML)
+		
+		[data] 두번째 파라메터 설정 -> jsp?msg=hello
+		[data] 두번째 파라메터 객체설정(json) -> {name:"kglim", age:100} -> name=kglim&age=100	
+		
+		callback함수 : 개발자의 의도가 아니라 프로그램 논리에 의해서 호출되는 함수
+	*/
+	
+	$(function() {
+		$('#btn').click(function(){
+			//$('#display').load("Ex01_Server_Date.jsp");  --> 비동기처리(파라메터없는)
+			$('#display').load("Ex01_Server_Date.jsp" , {"msg":$('#msg2').val()} , //jsp?msg=입력하는값
+								function(responseText, textStatus, xhr){
+										//이 함수는 응답이오면 실행 (readyState가 4라면)
+										//responseText : 서버가 응답한 결과물 (html, text)
+										//textStatus : success, fail 등
+										//	 (Status : 200, 403, 404, 500 등) 
+										if(textStatus == "success") { //응답이 4번이고 status code가 200이라면
+											console.log("responseText : " + responseText);
+										}else {//응답이 4번이고 status code가 500이나 404라면
+											console.log("response fail : " + xhr.status + "," + xhr.statusText);
+										}
+			});
+		});
+	});
+
+	</script>
+</head>
+<body>
+	<h3>동기처리</h3>
+	<div>
+		<form action="Ex01_Server_Date.jsp" method="get">
+			<input type="text" name="msg" id="msg">
+			<input type="submit" value="동기전송">
+		</form>
+	</div>
+	
+	<h3>비동기처리</h3>
+	<input type="text" name="mgs2" id="msg2">
+	<input type="button" id="btn" value="비동기전송">
+	<div id="display"></div>
+</body>
+</html>

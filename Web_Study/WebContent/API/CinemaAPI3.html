@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script type="text/javascript">
+
+		$(function(){	
+			$( "#date" ).datepicker({dateFormat : "yymmdd"});
+			
+			$('#btn').click(function(){
+				let flikerAPI = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?"
+					
+					let data = {
+									key:"f5eef3421c602c6cb7ea224104795888",  
+									targetDt:$('#date').val()              
+								}
+				
+					$.getJSON(flikerAPI, data, function(rdata, textStatus, xhr){
+						$('#tbody').empty();
+						$.each(rdata.boxOfficeResult.dailyBoxOfficeList, function(index, obj){
+							$('#tbody').append('<tr><td>'+obj.rank+'</td><td>'+obj.movieNm+'</td><td>'
+												+obj.openDt+'</td></tr>');
+						});
+					});
+			});
+		});
+	</script>
+</head>
+<body>
+	<input type="text" id="date">
+	<input type="button" id="btn" value="검색하기">
+	<table id="table" class="table">
+		<thead>
+		<tr class="table-primary">
+			<th>순위</th>
+			<th>영화제목</th>
+			<tH>개봉일</th>
+		</tr>
+		</thead>
+		<tbody id="tbody">
+		</tbody>
+	</table>
+</body>
+</html>

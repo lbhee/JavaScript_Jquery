@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		window.onload = function() {
+			// 계층트리(node)형태는 부모, 자식형태의 접근이 가능
+			let menode;
+			menode = document.getElementById("me");
+			menode.style.backgroundColor="gold";
+			
+			let parentnode = menode.parentNode; //div의 부모 -> body
+			parentnode.style.backgroundColor="green";
+			
+			let grandnode = parentnode.parentNode; //html
+			grandnode.style.backgroundColor="blue";
+			
+			let my = document.getElementById("mychild");
+			console.log(my);
+			console.log(my.firstChild.nodeName);
+			console.log(my.firstChild.innerText);
+			console.log(my.firstChild.nextSibling.innerText);
+			// innerHTML, innerText 사용 >> p, div, li, span태그는 value속성이 없어서 이런식으로 값에 접근.
+			
+			console.log(my.childNodes); //Array[<li>AA</li>][<li>BB</li>][<li>CC</li>]
+			console.log(my.childNodes.length);
+		}
+	</script>
+</head>
+<body>
+	<div>A</div><div>B</div><div id="me">C</div><div>D</div><div>E</div>
+	<ul id="mychild"><li>AA</li><li>BB</li><li>CC</li></ul>
+</html>

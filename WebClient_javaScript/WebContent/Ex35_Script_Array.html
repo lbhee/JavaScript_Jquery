@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		//자바스크립트 배열 : 자바의 컬랙션
+		let array = ['포도', '사과'];
+		document.write(array.toString() + "<br>"); //재정의되어있음.
+		document.write(array + "<br>") //디폴트 toString()이다.
+		
+		for(let i = 0; i < array.length; i++) { //배열출력 for문
+			document.write(array[i] + "<br>");
+		}
+
+		document.write("<hr>")
+		
+		for(let index in array) { //배열출력 개선된for문
+			document.write(array[index] + "<br>");
+		}
+		
+		//동적
+		array[2] = "바나나"; //push아니고 직접 방을 지정해서 값 넣기가능 (자바ArrayList는안됨)
+		document.write(array.toString() + "-" + array.length + "<br>"); 
+		
+		array[10] = "애플망고"; // 이렇게 갑자기 10번째방에 값을 넣는것도 가능하다.(나머지는 빈방으로 출력)
+		document.write(array.toString() + "-" + array.length + "<br>"); 
+		document.write(array[9] + "_array[9]<br>"); // 비어있기때문에 타입도없음 undefined
+		
+		array[9] = "배"; // 초기화 후에 
+		document.write(array[9] + "_array[9] -> 초기화(타입설정)<br>"); // 출력하면 된다.
+		
+		
+		let array2 = ["one", "two", "three"];
+		document.write("array2 : " + array2.length + "<br>");
+		
+		array2.length = 2; //강제로 배열길이 줄이기
+		document.write(array2.toString() + "-" + array2.length + "<br>"); 
+		
+		array2.length = 4; //강제로 배열길이 늘리기
+		document.write(array2.toString() + "-" + array2.length + "<br>");
+		
+		
+		// 권장방법
+		// 자바스크립트의 배열은 stack구조이다. LIFO >> push(), pop()사용!
+		array2.push("four");
+		document.write(array2.toString() + "-" + array2.length + "<br>");
+		document.write(array2.pop() + "<br>"); //four
+		document.write(array2.pop() + "<br>"); //undefined
+		document.write(array2.pop() + "<br>"); //undefined
+		document.write(array2.pop() + "<br>"); //two
+		document.write(array2.pop() + "<br>"); //one
+		document.write(array2.pop() + "<br>"); //undefined
+		
+		
+		// 이렇게 쓰자!
+		let list = [];
+		list.push("A");
+		list.push("B");
+		list.push("C");
+		document.write(list.pop());
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

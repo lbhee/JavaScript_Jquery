@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		div {
+				border: 1px solid black; width: 500px; height: 500px;
+			}
+	</style>
+</head>
+<body>
+	<input type="file" id="filepicker" name="fileList" multiple
+		accept=".mp4">
+	<div id="filebox">
+		<ul id="listing"></ul>
+		<ul id="fileul"></ul>
+	</div>
+	<div>
+		<video src="" id="getvideo" controls="controls" autoplay 
+		ondrop="drop(ev)" ondragover="allowDrop(ev)"></video>
+	</div>
+</body>
+	<script type="text/javascript">
+		
+		let URLList = [];
+		let videobox = document.getElementById("getvideo");
+		let output;
+		let files;
+		window.onload =function(){
+			
+		}
+		
+		function check(){
+			console.log(event);
+		}
+		
+		
+		function allowDrop(ev) {
+			ev.preventDefault();
+		}
+		function drag(ev) {
+			
+		}
+		
+		function drop(ev) {
+			ev.preventDefault();
+			let data = ev.dataTransfer.getData("text");
+			
+			console.log(data);
+		}
+		
+		//이거 목록 스트링 값으로 보여주기
+	 	document.getElementById("filepicker").addEventListener("change", function(event) {
+		output = document.getElementById("listing");
+		files = event.target.files;
+		
+		for(let i = 0; i < files.length; i++){
+			URLList[i] = window.URL.createObjectURL(files[i]);
+		}
+		
+		for(let i = 0; i < files.length; i++) {
+			let item = document.createElement("li");
+		    item.setAttribute("value", URLList[i]);
+		    item.setAttribute("draggable", true);
+		    item.innerHTML = files[i].name;
+		    output.appendChild(item);
+		  };
+		  
+		  for(let i = 0; i < files.length; i++){
+				let tagList = document.getElementsByTagName("li");
+				tagList[i].addEventListener("click", function (){
+					console.log(tagList[i].value);
+					videobox.src = output.getElementsByTagName("li")[i].getAttribute("value");	
+				})
+				tagList[i].addEventListener("ondragstart", function(ev){	console.log(ev);
+																		let dragstart = ev.dataTransfer.setData("text", ev.target.id);
+																		console.log(dragstart);
+																		});
+			}
+		  videobox.onload = function() {
+				window.URL.revokeObjectURL(this.src);
+			}
+		}, false);
+		
+	 	
+	 	
+	</script>
+</html>
+
+
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="Ex33.jsp" id="frm">
+		<fieldset>
+			<legend>주소록</legend>
+			<textarea rows="10" cols="30" name="txt" id="txt"></textarea>
+			<input type="submit" id="sub" value="전송하기">
+		</fieldset>
+	</form>
+</body>
+	<script type="text/javascript">
+		let add = ["아무개", "email:dlqhgml3@naver.com"];
+		let frm = document.getElementById("frm");
+		function add_Search(event) {
+			console.log(event.type);
+			
+			let textarea = frm.txt; // 주소줌
+			textarea.value = "이름/주소\n";
+			textarea.value += add[0] + "," + add[1] + "\n";
+		}
+		
+		// point!
+		// .addEventListener(이벤트등록)
+		frm.addEventListener('submit', function(event) {
+			event.preventDefault(); // 기본이벤트해제 (submit은 자체가 가지고 있는 서버로 전송기능이 있어서 해재해준후 사용. button을 사용하면 안해줘도됨.)
+			add_Search(event);
+		});
+	</script>
+</html>

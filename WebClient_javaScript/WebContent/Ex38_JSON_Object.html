@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		// 객체생성
+		let myObj = {name:"john", age:30, city:"seoul"};
+		console.log(myObj);
+		
+		//객체데이터를 [문자열데이터로] 바꾸기 * JSON.stringify() *
+		let Stringobj = JSON.stringify(myObj);
+		console.log(Stringobj);
+		console.log(typeof(Stringobj));
+		
+		//문자열 데이터를 [객체데이터로] 바꾸기 * JSON.parse() * 단, 문자열자체가 객체구조여야한다.
+		let myObj2 = '{"name":"john", "age":30, "city":"seoul"}'; // ''붙여주면 문자열이됨.(이럴땐 멤버필드""해주어야함!)
+		console.log(typeof(myObj2));
+		
+		let myjson = JSON.parse(myObj2);
+		console.log(typeof(myjson));
+		
+		console.log(myjson.name);    //객체.속성명
+		console.log(myjson["name"]); //객체["속성명"] //hashmap구조와 같아서 키값을 제공하면 속성을볼 수 있는 것이다.
+		
+		
+		/*
+			확장자
+			html       ->index.htm, index.html
+			css        -> common.css
+			javascript -> common.js
+			json       -> common.json (MIME타입 : application/json)
+			xml        -> common.xml
+		*/
+		
+		
+		let myCars;
+		myCars = {
+				"name":"john",
+				"age":30,
+				"cars":[
+							{"name":"Ford", "model":["Fiesta", "Focus", "Mustang"]},
+							{"name":"BMW", "model":["320", "x3", "x5"]},
+							{"name":"Fiat", "model":["500", "Panda"]}
+						]
+		}
+		
+		// 차량이름 모델명 추출하기
+		for(let index in myCars.cars) {
+			console.log(myCars.cars[index]);
+			document.write("차량이름 : " + myCars.cars[index].name);
+			for(let i in myCars.cars[index].model) {
+				document.write("모델명 : " + myCars.cars[index].model[i]);
+			}
+			document.write("<hr>");
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

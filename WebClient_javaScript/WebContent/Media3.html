@@ -1,0 +1,24 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지 파일 미리보기</title> 
+</head> 
+<body> 
+	<input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/> 
+	<div id="image_container"></div> 
+<script>
+	function setThumbnail(event){
+		for (var image of event.target.files){ 
+			var reader = new FileReader();
+			reader.onload = function(event){
+				var img = document.createElement("img"); 
+				img.setAttribute("src", event.target.result);
+				img.setAttribute("width", 100);
+				document.querySelector("div#image_container").appendChild(img);
+			}; 
+			reader.readAsDataURL(image);
+		} 
+	} 
+</script> 
+</body> 
+</html>

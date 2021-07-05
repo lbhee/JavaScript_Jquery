@@ -1,0 +1,224 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+<title>안승주</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<noscript>
+	<link rel="stylesheet" href="assets/css/noscript.css" />
+</noscript>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- jquery -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- jquery ui script -->
+<script src="https://www.google.com/jsapi"></script>
+<!-- google api -->
+
+<script type="text/javascript">
+		$(document).ready(function(){
+			//차트 스크립트 
+			google.load("visualization", "1", {packages:["corechart"]});
+			
+			google.setOnLoadCallback(drawChart); 
+			
+			function drawChart() {
+				
+				var data = google.visualization.arrayToDataTable( [["일정","시간"],
+																	["Sleep",7],["exercise",1.2],["move to bit",1.1],["study",12],
+																	["move to home",1.1],["break-time",2]] ); 
+				var options = { title: "schedule-chart" }; 
+				var chart = new google.visualization.PieChart(document.getElementById("schedule")); 
+				chart.draw(data, options); }
+			
+			
+			
+
+		});
+	</script>
+
+</head>
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<!-- Note: The "styleN" class below should match that of the banner element. -->
+		<header id="header" class="alt style2">
+			<a href="index.html" class="logo"><strong>3조</strong> <span>나이스
+					짱짱맨</span></a>
+			<nav>
+				<a href="#menu">Menu</a>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="landing.html">김대업</a></li>
+				<li><a href="jina.html">김진아</a></li>
+				<li><a href="Ahn.html">안승주</a></li>
+				<li><a href="doug.html">이동근</a></li>
+				<li><a href="LBH.html">이보희</a></li>
+				<li><a href="seokhee.html">한석희</a></li>
+			</ul>
+		</nav>
+
+		<!-- Banner -->
+		<!-- Note: The "styleN" class below should match that of the header element. -->
+		<section id="banner" class="style2">
+			<div class="inner">
+				<span class="image"> <img src="images/KakaoTalk_Photo_2021-03-25-14-30-21.jpeg" alt="" />
+				</span>
+				<header class="major">
+					<h1 style="text-shadow: 2px 2px 2px black;">돈많이 벌꺼야 안승주</h1>
+				</header>
+				<div class="content">
+					<p>돈 많이 벌고 싶어요</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- One -->
+			<section id="one">
+				<div class="inner">
+					<header class="major">
+						<h2>Introduce</h2>
+						<p>
+							IT 개발자로 나아가기 위해 전진하는 사람<br> 평생 배우는 입장에서 앞으로 나아갈 길이 많지만 긍정적인
+							마인드로 역경을 해쳐나갈 준비가 되어있는 사람<br> 주변을 위해 희생할 수 있는 사람<br>
+							꾸준함과 성실함이 성공의 비결이라 믿고 있는 사람
+						</p>
+					</header>
+					<p></p>
+				</div>
+			</section>
+
+			<!-- Two -->
+			<section id="two" class="spotlights">
+				<section>
+					<a href="#" class="image"> <img src="images/KakaoTalk_Photo_2021-03-25-14-30-01.jpeg" alt=""
+						data-position="center center" />
+					</a>
+					<div class="content">
+						<div class="inner">
+							<header class="major">
+								<h3>INFORMATION</h3>
+								<p>
+									<br> 거주지: 서울시 동대문구 제기동<br> <br> 전 공: 건축공학과<br>
+									<br> 취 미: 운동<br>
+								</p>
+							</header>
+						</div>
+					</div>
+				</section>
+				<section>
+					<a class="image"> <img src="images/KakaoTalk_Photo_2021-03-25-14-30-13.jpeg" alt=""
+						data-position="top center" />
+					</a>
+					<div class="content">
+						<div class="inner">
+							<header class="major">
+								<h3>SCHEDULE</h3>
+							</header>
+							<!-- 차트 넣기  -->
+							<div id="schedule" data-position="top center" style = "height: 200px; margin-bottom: 50px;"></div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<a class="image"> <img src="images/KakaoTalk_Photo_2021-03-25-14-29-42.jpeg" alt=""
+						data-position="25% 25%" />
+					</a>
+					<div class="content">
+						<div class="inner">
+							<header class="major">
+								<h3>MEMORY</h3>
+							</header>
+							<ul class="actions">
+								<li><a href="Ahnpicture.html" class="button">go to see the
+										picture</a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<a class="image"> <img src="images/KakaoTalk_Photo_2021-03-25-14-31-19.jpeg" alt=""
+						data-position="top center" />
+					</a>
+					<div class="content">
+						<div class="inner">
+							<header class="major">
+								<h3>EXERCISE ROUTINE</h3>
+							</header>
+							<ul class="actions">
+								<li><a href="AhnExercise.html" class="button next">routine</a></li>
+							</ul>
+
+						</div>
+					</div>
+				</section>
+			</section>
+
+
+			<!-- Three -->
+			<section id="three">
+				<div class="inner">
+					<header class="major">
+						<h2>RETURN TO HOME</h2>
+					</header>
+					<ul class="actions">
+						<li><a href="index.html" class="button next">return to
+								HOME</a></li>
+					</ul>
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Contact -->
+
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="#" class="icon brands alt fa-twitter"><span
+							class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands alt fa-facebook-f"><span
+							class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon brands alt fa-instagram"><span
+							class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands alt fa-github"><span
+							class="label">GitHub</span></a></li>
+					<li><a href="#" class="icon brands alt fa-linkedin-in"><span
+							class="label">LinkedIn</span></a></li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+</html>

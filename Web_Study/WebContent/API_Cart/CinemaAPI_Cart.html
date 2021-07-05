@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	
+	<script type="text/javascript">
+	//AIP출처 : https://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do
+
+	$(function(){	
+		$( "#date" ).datepicker({dateFormat : "yymmdd"});
+		
+		var movieNmarray = [];  //movieNm 영화명
+		var salesAmtarray = []; //salesAmt 해당일 매출액
+		var salesAccarray = []; //salesAcc 누적매출액
+		
+		$('#btn').click(function(){
+			let flikerAPI = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?"
+				
+				let data = {
+								key:"f5eef3421c602c6cb7ea224104795888",  
+								targetDt:$('#date').val()              
+							}
+			
+				$.getJSON(flikerAPI, data, function(data, textStatus, xhr){
+					$.each(data.boxOfficeResult.dailyBoxOfficeList, function(index, obj){
+						movieNmarray.push(obj.movieNm);
+						salesAmtarray.push(parseInt(obj.salesAmt));
+						salesAccarray.push(parseInt(obj.salesAcc));
+
+					});
+					console.log(movieNmarray);
+					console.log(salesAmtarray);
+					console.log(salesAccarray);
+					
+					//차트
+					Highcharts.chart('container', {
+					    chart: {
+					        type: 'column' //막대그래프
+					    },
+					    title: {
+					        text: '영화매출액'
+					    },
+					    subtitle: {
+					        text: '출처 : 영화진흥위원회'
+					    },
+					    xAxis: {
+					        categories: movieNmarray, //영화이름
+					        crosshair: true
+					    },
+					    yAxis: {
+					        min: 1000000, //최소값 100만원
+					        title: {
+					            text: '매출'
+					        }
+					    },
+					    tooltip: {
+					        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+					        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+					            		 '<td style="padding:0"><b>{point.y} 원</b></td></tr>',
+					        footerFormat: '</table>',
+					        shared: true,
+					        useHTML: true
+					    },
+					    plotOptions: {
+					        column: {
+					            pointPadding: 0.2,
+					            borderWidth: 0
+					        }
+					    },
+					    series: [{
+					        name: '당일 매출액',
+					        data: salesAmtarray
+
+					    }, {
+					        name: '누적 매출액',
+					        data: salesAccarray
+
+					    }]
+					});
+
+				});
+		});
+	});
+	
+	
+	
+	
+	</script>
+</head>
+<body>
+	<input type="text" id="date">
+	<input type="button" id="btn" value="검색하기">
+	<figure class="highcharts-figure">
+    <div id="container"></div>
+	</figure>
+</body>
+</html>

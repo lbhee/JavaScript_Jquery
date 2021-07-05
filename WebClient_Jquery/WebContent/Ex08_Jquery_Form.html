@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		//https://www.w3schools.com/jquery/jquery_ref_html.asp
+		//https://www.w3schools.com/jquery/jquery_ref_selectors.asp
+		//https://api.jquery.com/category/selectors/form-selectors/
+		
+		$(function(){
+			$('#txtname').val('hong'); //setter역할(쓰기)
+			console.log($('#txtname').val()); //getter역할(읽기)
+			
+			//1. radio 기본값 설정(checked 속성가지게한다.)
+			$('input:radio').val(['F']); //input태그에서 radio를 찾아서 기본값을 설정하겠다. input태그가 여러개있으면 배열이므로 []를 사용해야한다.
+			console.log($('input:radio').val()); //radio가 여러개가 있으면, 처음만나는 태그의 value
+			console.log($('input:checked').val());//radio가 여러개가 있으면, 처음만나는 태그 중 check된 태그의 value
+			console.log($('input:radio[name=gender]:checked').val()); //radio중 name이 gender인 것중에 check된 태그의 value
+			
+			//select태그
+			//단일선택, 다중선택(접근성에 대한 문제로 잘 안쓰인다)
+			console.log($('#isF').val()); //선택되어있는 option의 value
+			console.log($('#isF').val('oracle')); //oracle을 선택하겠다.
+			
+			console.log($('#isF2').val(['java', 'oracle'])); //다중선택을 하겠다.
+			
+			$('#btnok').click(function(){
+				let selecttag = $('#isF2').val(); //다중선택이므로 selecttag가 배열이된다.
+				console.log(selecttag);
+				for(let index in selecttag) {
+					console.log("value : " + selecttag[index]);
+				}
+			});
+			
+			if($('#myform').children().is('input:submit')) { //myform의 자식중에 submit타입을 가진 input태그가 있니?
+				console.log("TRUE");
+			}else{
+				console.log("FALSE");
+			}
+		});
+		
+	</script>
+</head>
+<body>
+	Textbox : <input type="text" id="txtname">
+	<br>
+	
+	RadioButton : Checked 속성
+	<input type="radio"  name="gender" value="M">남
+	<input type="radio"  name="gender" value="F">여
+	<br>
+	
+	
+	Dropdownlist(select 태그)
+	<select id="isF">
+		<option value="java">자바</option>
+		<option value="jsp">웹</option>
+		<option value="oracle">오라클</option>
+	</select>
+	<br>
+	Dropdownlist(select 태그)
+	<select id="isF2" multiple="multiple" size="3">
+		<option value="java">자바</option>
+		<option value="jsp">웹</option>
+		<option value="oracle">오라클</option>
+	</select>
+	<br>
+	<input type="button" value="확인" id="btnok">
+	<br>
+	<div id="myform">
+		submit button : <input  type="submit" value="전송">
+	</div>
+</body>
+</html>

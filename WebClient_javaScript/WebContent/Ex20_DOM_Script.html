@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		.democlass {color : red;}
+	</style>
+</head>
+<body>
+	<div id="div">
+		<h1 class="democlass">Hello World_1</h1>
+		<h1 class="democlass">Hello World_2</h1>
+		<h1 class="democlass">Hello World_3</h1>
+	</div>
+</body>
+<script type="text/javascript">
+	//document.getElementsByTagName("h1")[0].removeAttribute("class"); //h1배열 중 0번째에 스타일을 제거
+	// h1배열 스타일을 제거
+	/*
+	let arr = document.getElementsByTagName("h1");
+	console.log(arr);
+	for(let i = 0; i < arr.length; i++) {
+		arr[i].removeAttribute("class");
+	}
+	*/
+	
+	
+	/*
+	- [문제발생코드] 동적배열이기 때문에 지워진방으로 옮겨지면서 차례대로 삭제되지않는 문제발생
+	
+	let arr = document.getElementsByTagName("h1");
+	for(let index in arr){
+		//console.log(arr[index]);
+		
+		document.getElementById("div").removeChild(arr[index]);
+		console.log("index : " +  index   +"-length : " + arr.length);  //2 , 1
+		//[0][1][2]
+		//[Hello World_1][Hello World_2][Hello World_3]
+		
+		//[0][1]
+		//[Hello World_2][Hello World_3]
+		
+		//[0]
+		//[Hello World_2]
+	}
+	*/
+	
+	/*
+	let arr = document.getElementsByTagName("h1");
+    for(let index in arr){
+    	if(arr.length > 0){
+    		console.log(index + " / " + arr.length + " / " + (arr.length -1));
+        	document.getElementById("div").removeChild(arr[arr.length-1]);
+    	}
+    }
+	// 뒤에서부터삭제하면 움직임이 없다.
+	//[0][1][2]   >> [2] 삭제
+	//[0][1]      >> [1] 삭제
+	//[0]         >> [0] 삭제
+    */
+    
+    
+	// 자기자신 삭제하기 remove()
+    //let arr = document.getElementsByTagName("h1");
+    //let len = arr.length; //3
+    //for(let i = 0 ; i < len ; i++){
+    //	arr[arr.length -1].remove();
+    //}
+</script>
+</html>

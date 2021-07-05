@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<p>Outside myFunction() carName is undefined.</p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+</body>
+<script>
+// 이 영역에 쓰는 함수가 GLOBAL variable이다. 모든 함수에서 사용가능하다.
+var gname = "world";
+
+myFunction();
+
+function myFunction() {
+	//[ 사용금지 ]
+	aaa ="아무개"; //함수안에 타입없이 변수사용가능하지만 사용하지마라! 함수안에 타입이 없는 변수는 global변수로 만들어버린다. 다른쪽에서 사용하게되니까.
+	console.log(aaa);
+	
+	
+	//Local JavaScript Variables
+    var carName = "Volvo"; // var처럼 타입을 붙이면 local변수가 된다. 함수안에서는 이렇게 사용하는게 좋다!
+  	document.getElementById("demo1").innerHTML = typeof(carName) + " " + carName +"<hr>" ;
+  	//Global
+  	document.getElementById("demo3").innerHTML = typeof(gname) + " " + gname;
+}
+
+document.getElementById("demo2").innerHTML = typeof(carName) +"<hr>" ; // 여기서는 carName을 찾을 수 없다. local이니까. (undefined)
+document.getElementById("demo4").innerHTML = typeof(gname); // gname은 global변수이므로 찾을 수 있다.
+/*  
+  전 (이전) : var
+  ES2015  두가지 키워드 : let  , const
+  
+  1. Global
+  2. Local
+  3. new block  : let , const
+ 
+ 
+ 
+ */
+</script>
+</html>
